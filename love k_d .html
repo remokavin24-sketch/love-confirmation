@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Love ❤️</title>
+
+<style>
+body {
+    text-align: center;
+    font-family: Arial;
+    background: linear-gradient(to right, #ff758c, #ff7eb3);
+    color: white;
+    overflow: hidden;
+}
+
+h1 {
+    margin-top: 80px;
+}
+
+button {
+    padding: 12px 25px;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 15px;
+    transition: 0.3s;
+}
+
+#yesBtn {
+    background: white;
+    color: #ff4d6d;
+}
+
+#noBtn {
+    background: black;
+    color: white;
+    position: absolute;
+}
+
+.name {
+    font-size: 35px;
+    margin-top: 20px;
+}
+
+.quote {
+    font-size: 20px;
+    margin-top: 15px;
+}
+
+img {
+    margin-top: 20px;
+    width: 300px;
+    border-radius: 15px;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>Do you love me? ❤️</h1>
+
+<button id="yesBtn">Yes 💖</button>
+<button id="noBtn">No 😜</button>
+
+<script>
+
+let noClick = 0;
+let yesSize = 1;
+let noSize = 1;
+let escapeMode = false;
+
+const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+
+// No button messages
+const messages = [
+    "Are you sure? 😢",
+    "Really ah? 😟",
+    "Think again 🥺",
+    "Don't lie 😜",
+    "I know you love me 😏",
+    "Ennal mudiyala 😭"
+];
+
+// YES CLICK
+yesBtn.onclick = function(){
+
+    document.body.innerHTML = `
+        <h1>Will you be mine forever? 💍❤️</h1>
+
+        <!-- 👉 இங்க தான் நீ உன் image name change பண்ணணும் -->
+        <img src="love3.jpeg">
+
+        <div class="name">
+            Kavin ❤️ Dharshini
+        </div>
+
+        <div class="quote">
+            "You are my today and all of my tomorrows 💖"
+        </div>
+    `;
+};
+
+// NO CLICK
+noBtn.onclick = function(){
+
+    if(noClick < messages.length){
+        noBtn.innerHTML = messages[noClick];
+        noClick++;
+    }
+
+    // Yes big ஆகும்
+    yesSize += 0.2;
+    yesBtn.style.transform = "scale(" + yesSize + ")";
+
+    // No small ஆகும்
+    noSize -= 0.1;
+    noBtn.style.transform = "scale(" + noSize + ")";
+
+    // Last வந்ததும் escape mode
+    if(noClick >= messages.length){
+        escapeMode = true;
+    }
+};
+
+// Escape movement
+noBtn.onmouseover = function(){
+    if(escapeMode){
+        let x = Math.random() * (window.innerWidth - 100);
+        let y = Math.random() * (window.innerHeight - 50);
+
+        noBtn.style.left = x + "px";
+        noBtn.style.top = y + "px";
+    }
+};
+
+</script>
+
+</body>
+</html>
